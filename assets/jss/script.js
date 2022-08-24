@@ -1,6 +1,7 @@
 var coordinates = [];
 var searchBtn = document.querySelector('#searchBtn');
 var inputEl = document.querySelector('#cityInput');
+var history = document.querySelector('.history');
 var searchInput = '';
 var cityLat = '';
 var cityLon = '';
@@ -124,9 +125,10 @@ var getCoords = function(city) {
 
 var buttonMaker = function(city) {
     var button = document.createElement('btn');
-    var history = document.querySelector('.history');
     button.textContent = city;
     button.classList = 'btn btn-primary m-2';
+    button.dataset.lat = cityLat;
+    button.dataset.lon = cityLon;
     history.appendChild(button);
 
 }
@@ -136,5 +138,6 @@ var buttonHandler = function() {
     getCoords(searchInput);
     buttonMaker(searchInput);
 };
+
 
 searchBtn.addEventListener('click', buttonHandler);
