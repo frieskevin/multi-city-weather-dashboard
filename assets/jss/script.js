@@ -108,14 +108,6 @@ var get5Day = function(coordsLat, coordsLon) {
     });
 };
 
-var iconMaker = function(weather) {
-    if (weather === 'Rain') {
-
-    } else if (weather === 'Clouds') {
-
-    }
-}
-
 var getCoords = function(city) {
     var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=1e02d4af87386189743a9965718bcc4f'
     fetch(apiUrl).then(function(response) {
@@ -130,9 +122,19 @@ var getCoords = function(city) {
     });
 };
 
+var buttonMaker = function(city) {
+    var button = document.createElement('btn');
+    var history = document.querySelector('.history');
+    button.textContent = city;
+    button.classList = 'btn btn-primary m-2';
+    history.appendChild(button);
+
+}
+
 var buttonHandler = function() {
     searchInput = inputEl.value.trim();
     getCoords(searchInput);
+    buttonMaker(searchInput);
 };
 
 searchBtn.addEventListener('click', buttonHandler);
