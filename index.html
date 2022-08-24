@@ -25,22 +25,53 @@
                 <label for="cityInput">Search for a City:</label><br>
                 <input type="text" id="cityInput"></input><br>
                 <button class="btn btn-primary btn-block" id="searchBtn">Search</button>
+                <div class="history"></div>
             </div>
-            <div class="col-9">
+            <div class="col-9 container">
                 <div class="currentCity border border-dark" id="currentCity">
-                    <h2 id="cityDisplay"></h2><img id="weatherIcon"><br>
-                    <p class="temp"></p><br>
-                    <p class="wind"></p><br>
-                    <p class="humidity"></p><br>
-                    <p class="pressure"></p><br>
+                    <h2 id="cityDisplay"></h2><img id="weatherIcon">
+                    <p class="temp"></p>
+                    <p class="wind"></p>
+                    <p class="humidity text-white"></p>
+                    <p class="pressure"></p>
                 </div>
-                <div class="5dayForecast">
+                <div class="5dayForecast row">
                     <h2>5-Day Forecast:</h2>
-                    <div class="col-2.4 border border-dark bg-dark px-2" id="day1"></div>
-                    <div class="col-2.4 border border-dark bg-dark px-2" id="day2"></div>
-                    <div class="col-2.4 border border-dark bg-dark px-2" id="day3"></div>
-                    <div class="col-2.4 border border-dark bg-dark px-2" id="day4"></div>
-                    <div class="col-2.4 border border-dark bg-dark px-2" id="day5"></div>
+                    <div class="col-2 border border-dark bg-dark px-2" id="day1">
+                        <h3 class="text-white" id="d1Date"></h3>
+                        <img id="d1Ico">
+                        <p class="text-white" id="d1Temp"></p>
+                        <p class="text-white" id="d1Wind"></p>
+                        <p class="text-white" id="d1Humidity"></p>
+                    </div>
+                    <div class="col-2 border border-dark bg-dark px-2" id="day2">
+                        <h3 class="text-white" id="d2Date"></h3>
+                        <img id="d2Ico">
+                        <p class="text-white" id="d2Temp"></p>
+                        <p class="text-white" id="d2Wind"></p>
+                        <p class="text-white" id="d2Humidity"></p>
+                    </div>
+                    <div class="col-2 border border-dark bg-dark px-2" id="day3">
+                        <h3 class="text-white" id="d3Date"></h3>
+                        <img id="d3Ico">
+                        <p class="text-white" id="d3Temp"></p>
+                        <p class="text-white" id="d3Wind"></p>
+                        <p class="text-white" id="d3Humidity"></p>
+                    </div>
+                    <div class="col-2 border border-dark bg-dark px-2" id="day4">
+                        <h3 class="text-white" id="d4Date"></h3>
+                        <img id="d4Ico">
+                        <p class="text-white" id="d4Temp"></p>
+                        <p class="text-white" id="d4Wind"></p>
+                        <p class="text-white" id="d4Humidity"></p>
+                    </div>
+                    <div class="col-2 border border-dark bg-dark px-2" id="day5">
+                        <h3 class="text-white" id="d5Date"></h3>
+                        <img id="d5Ico">
+                        <p class="text-white" id="d5Temp"></p>
+                        <p class="text-white" id="d5Wind"></p>
+                        <p class="text-white" id="d5Humidity"></p>
+                    </div>
                 </div>
             </div>
         </div>
