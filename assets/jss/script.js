@@ -13,8 +13,23 @@ var pressureEl = document.querySelector('.pressure');
 var imgEl = document.querySelector('#weatherIcon');
 var currentDate = new Date(Date.now()).toLocaleString();
 
+var cities = [];
+
 var historyLat = '';
 var historyLon = '';
+
+var loadHistory = function () {
+    cities = JSON.parse(localStorage.getItem('cities'));
+    if (cities) {
+        for (let i = 0; i < cities.length; i++) {
+            buttonMaker(cities[i]);
+        }
+    };
+};
+
+var saveHistory = function() {
+    localStorage.setItem('cities', JSON.stringify(cities));
+};
 
 //jquery function taking the created history button id and putting it into the coordinates and weather display functions
 $(document).on('click', '.historyButtons', function() {
@@ -167,8 +182,14 @@ var buttonHandler = function() {
     searchInput = inputEl.value.trim();
     getCoords(searchInput);
     buttonMaker(searchInput);
+    cities = cities || [];
+    cities.push(searchInput);
+    console.log(cities);
+    saveHistory();
 };
 
 
 //event listener for search button
 searchBtn.addEventListener('click', buttonHandler);
+
+loadHistory();
