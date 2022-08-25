@@ -16,6 +16,7 @@ var currentDate = new Date(Date.now()).toLocaleString();
 var historyLat = '';
 var historyLon = '';
 
+//jquery function taking the created history button id and putting it into the coordinates and weather display functions
 $(document).on('click', '.historyButtons', function() {
     var historyCity = this.id;
 
@@ -34,6 +35,8 @@ $(document).on('click', '.historyButtons', function() {
     
 });
 
+
+// function getting and displaying the weather from the coordinates provided
 var getWeather = function(coordsLat, coordsLon) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=' + coordsLat + '&lon=' + coordsLon + '&appid=1e02d4af87386189743a9965718bcc4f';
     fetch(apiUrl).then(function(response) {
@@ -59,6 +62,7 @@ var getWeather = function(coordsLat, coordsLon) {
     });
 };
 
+//function getting and displaying 5 day forecast from coordinates provided
 var get5Day = function(coordsLat, coordsLon) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=' + coordsLat + '&lon=' + coordsLon + '&appid=1e02d4af87386189743a9965718bcc4f';
     fetch(apiUrl).then(function(response) {
@@ -130,6 +134,8 @@ var get5Day = function(coordsLat, coordsLon) {
     });
 };
 
+
+//function getting and storing city coordinates from city inputed by user
 var getCoords = function(city) {
     var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=1e02d4af87386189743a9965718bcc4f'
     fetch(apiUrl).then(function(response) {
@@ -144,6 +150,7 @@ var getCoords = function(city) {
     });
 };
 
+//makes a button from the city inputted and puts it into the history section
 var buttonMaker = function(city) {
     var button = document.createElement('btn');
     button.textContent = city;
@@ -155,6 +162,7 @@ var buttonMaker = function(city) {
 
 }
 
+//function handling the search button
 var buttonHandler = function() {
     searchInput = inputEl.value.trim();
     getCoords(searchInput);
@@ -162,5 +170,5 @@ var buttonHandler = function() {
 };
 
 
-
+//event listener for search button
 searchBtn.addEventListener('click', buttonHandler);
