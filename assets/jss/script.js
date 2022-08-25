@@ -12,12 +12,11 @@ var humidityEl = document.querySelector('.humidity');
 var pressureEl = document.querySelector('.pressure');
 var imgEl = document.querySelector('#weatherIcon');
 var currentDate = new Date(Date.now()).toLocaleString();
-
 var cities = [];
-
 var historyLat = '';
 var historyLon = '';
 
+//loads search history from local storage
 var loadHistory = function () {
     cities = JSON.parse(localStorage.getItem('cities'));
     if (cities) {
@@ -27,6 +26,7 @@ var loadHistory = function () {
     };
 };
 
+//saves search history to local storage
 var saveHistory = function() {
     localStorage.setItem('cities', JSON.stringify(cities));
 };
@@ -192,4 +192,5 @@ var buttonHandler = function() {
 //event listener for search button
 searchBtn.addEventListener('click', buttonHandler);
 
+//loads search history from localstorage
 loadHistory();
