@@ -1,7 +1,7 @@
 var coordinates = [];
 var searchBtn = document.querySelector('#searchBtn');
 var inputEl = document.querySelector('#cityInput');
-var history = document.querySelector('.history');
+var historyEl = document.querySelector('.history');
 var searchInput = '';
 var cityLat = '';
 var cityLon = '';
@@ -12,6 +12,27 @@ var humidityEl = document.querySelector('.humidity');
 var pressureEl = document.querySelector('.pressure');
 var imgEl = document.querySelector('#weatherIcon');
 var currentDate = new Date(Date.now()).toLocaleString();
+
+var historyLat = '';
+var historyLon = '';
+
+$(document).on('click', '.historyButtons', function() {
+    var historyCity = this.id;
+
+    var apiUrl1 = 'http://api.openweathermap.org/geo/1.0/direct?q=' + historyCity + '&limit=1&appid=1e02d4af87386189743a9965718bcc4f'
+    fetch(apiUrl1).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                historyLat = data[0].lat;
+                historyLon = data[0].lon;
+                getWeather(historyLat, historyLon);
+                get5Day(historyLat, historyLon);
+            });
+        };
+    });
+
+    
+});
 
 var getWeather = function(coordsLat, coordsLon) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=' + coordsLat + '&lon=' + coordsLon + '&appid=1e02d4af87386189743a9965718bcc4f';
@@ -126,10 +147,11 @@ var getCoords = function(city) {
 var buttonMaker = function(city) {
     var button = document.createElement('btn');
     button.textContent = city;
-    button.classList = 'btn btn-primary m-2';
+    button.id = city
+    button.classList = 'historyButtons btn btn-primary m-2';
     button.dataset.lat = cityLat;
     button.dataset.lon = cityLon;
-    history.appendChild(button);
+    historyEl.appendChild(button);
 
 }
 
@@ -138,6 +160,7 @@ var buttonHandler = function() {
     getCoords(searchInput);
     buttonMaker(searchInput);
 };
+
 
 
 searchBtn.addEventListener('click', buttonHandler);
