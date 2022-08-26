@@ -35,7 +35,7 @@ var saveHistory = function() {
 $(document).on('click', '.historyButtons', function() {
     var historyCity = this.id;
 
-    var apiUrl1 = 'http://api.openweathermap.org/geo/1.0/direct?q=' + historyCity + '&limit=1&appid=1e02d4af87386189743a9965718bcc4f'
+    var apiUrl1 = 'https://api.openweathermap.org/geo/1.0/direct?q=' + historyCity + '&limit=1&appid=1e02d4af87386189743a9965718bcc4f'
     fetch(apiUrl1).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
@@ -152,7 +152,7 @@ var get5Day = function(coordsLat, coordsLon) {
 
 //function getting and storing city coordinates from city inputed by user
 var getCoords = function(city) {
-    var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=1e02d4af87386189743a9965718bcc4f'
+    var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=1e02d4af87386189743a9965718bcc4f'
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
